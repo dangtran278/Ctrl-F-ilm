@@ -18,4 +18,4 @@ aws ecs update-service \
   --service ctrl-film-serving \
   --force-new-deployment \
   --region "$AWS_REGION" \
-  --output none
+  --output text
