@@ -11,8 +11,29 @@ env:
   ECS_SERVICE: ctrl-film-serving
 
 jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.2.2
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+
+      - name: Install dependencies
+        run: pip install -e ".[dev]"
+        working-directory: serving
+
+      - name: Run tests
+        run: python -m pytest tests/ -v
+        working-directory: serving
+
   deploy:
     runs-on: ubuntu-latest
+    needs: test
 
     steps:
       - name: Checkout code
