@@ -5,6 +5,7 @@ requires-python = ">=3.13"
 dependencies = [
     "fastapi",
     "uvicorn[standard]",
+    "prometheus-fastapi-instrumentator",
 ]
 
 [project.optional-dependencies]
